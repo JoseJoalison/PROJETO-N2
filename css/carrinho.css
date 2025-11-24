@@ -1,0 +1,521 @@
+/* Seção principal que agrupa painel e recomendações. */
+.cart_main {
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px;
+  align-items:flex-start;
+}
+
+/* Cartão do carrinho e submenu flutuante compartilham aparência. */
+.cart_panel,
+#cart_panel_submenu {
+  background:var(--surface);
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  color:var(--text);
+  overflow:hidden;
+}
+
+/* Painel compacto fixo no topo direito. */
+#cart_panel_submenu {
+  position:fixed;
+  top:calc(var(--header-height) + 16px);
+  right:24px;
+  width:min(420px, 92vw);
+  max-height:70vh;
+  z-index:60;
+}
+
+/* Conteúdo interno com espaçamento vertical. */
+.cart_inner {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:20px;
+  min-width:0;
+}
+
+/* Botão para recolher ou expandir o carrinho. */
+.cart_toggle {
+  align-self:flex-start;
+  padding:6px 14px;
+  border-radius:999px;
+  border:none;
+  background:rgba(255,255,255,0.08);
+  color:var(--text);
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Aparência do painel ao ficar recolhido. */
+.cart_panel.collapsed {
+  width:auto;
+  padding:8px 12px;
+  max-width:240px;
+}
+
+/* Conteúdo em linha quando o carrinho está recolhido. */
+.cart_panel.collapsed .cart_inner {
+  flex-direction:row;
+  align-items:center;
+  gap:8px;
+  padding:0;
+}
+
+/* Botão minimalista no modo comprimido. */
+.cart_panel.collapsed .cart_toggle {
+  background:none;
+  padding:0;
+}
+
+/* Remove seções extras ao recolher. */
+.cart_panel.collapsed .cart_left,
+.cart_panel.collapsed .cart_right {
+  display:none;
+}
+
+/* Coluna com lista de itens adicionados. */
+.cart_left {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  min-width:0;
+}
+
+/* Coluna com resumo e ações. */
+.cart_right {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--surface-alt);
+  padding:16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.04);
+}
+
+/* Lista rolável de itens no carrinho. */
+.cart_panel #cart_items {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  max-height:240px;
+  overflow:auto;
+  padding-right:6px;
+}
+
+/* Layout de cada item do carrinho. */
+.cart_panel #cart_items li {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* Remove borda do último item. */
+.cart_panel #cart_items li:last-child {
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+/* Bloco com nome e detalhes do item. */
+.item_left {
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* Destaque do nome do produto. */
+.item_name {
+  font-weight:600;
+}
+
+/* Área com botões de quantidade e remover. */
+.item_right {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Número exibindo quantidade atual. */
+.item_qty {
+  min-width:24px;
+  text-align:center;
+}
+
+/* Botões de controle e remover item. */
+.qty_minus,
+.qty_plus,
+.remove_item {
+  background:rgba(255,255,255,0.08);
+  border:none;
+  color:var(--text);
+  padding:6px 10px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* Feedback visual ao passar o mouse nos controles. */
+.qty_minus:hover,
+.qty_plus:hover,
+.remove_item:hover {
+  background:rgba(255,255,255,0.16);
+}
+
+/* Botão remover com largura extra. */
+.remove_item {
+  padding:6px 12px;
+}
+
+/* Tabela detalhada dos itens. */
+.cart_table {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:auto;
+}
+
+/* Células com espaçamento e divisória. */
+.cart_table th,
+.cart_table td {
+  padding:12px;
+  text-align:left;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* Cabeçalho de colunas informativo. */
+.cart_table thead th {
+  color:var(--text-muted);
+  font-weight:600;
+  font-size:0.9rem;
+}
+
+/* Valores monetários destacados à direita. */
+.cart_table .item_price,
+.cart_table .item_total {
+  text-align:right;
+  color:var(--primary);
+  font-weight:700;
+}
+
+/* Controles de quantidade centralizados. */
+.cart_table .item_qty_td {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+/* Coluna de ações centralizada. */
+.cart_table .item_actions {
+  text-align:center;
+}
+
+/* Remove borda inferior da última linha. */
+.cart_table tbody tr:last-child td {
+  border-bottom:none;
+}
+
+/* Rodapé com seções de pagamento, totais e ações. */
+.cart_footer {
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-top:8px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:16px;
+}
+
+/* Cartões individuais do rodapé do carrinho. */
+.cart_footer .payment_block,
+.cart_footer .totals_block,
+.cart_footer .actions {
+  flex:1 1 220px;
+  background:var(--surface-alt);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.04);
+  padding:16px;
+}
+
+/* Destaque do título na área de pagamento. */
+.cart_footer .payment_block strong {
+  display:block;
+  margin-bottom:10px;
+}
+
+/* Layout dos radios e rótulos do pagamento. */
+.cart_footer label {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--text-muted);
+  margin-bottom:8px;
+}
+
+/* Personaliza o radio button para a cor da marca. */
+.cart_footer input[type="radio"] {
+  accent-color:var(--primary);
+}
+
+/* Stack de totais com valores auxiliares. */
+.cart_footer .totals_block {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* Texto secundário com fonte menor. */
+.cart_footer .totals_block .secundario {
+  font-size:0.9rem;
+}
+
+/* Valores numéricos do resumo. */
+#cart_subtotal,
+#cart_total {
+  font-weight:700;
+}
+
+/* Total destacado em cor primária. */
+#cart_total {
+  font-size:1.1rem;
+  color:var(--primary);
+}
+
+/* Área de ações com botões centralizados. */
+.cart_footer .actions {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Botão principal preenche toda a largura. */
+.cart_footer .actions .botao {
+  width:100%;
+  justify-content:center;
+}
+
+/* Coluna lateral com sugestões de itens. */
+.recommendation_column {
+  position:relative;
+  flex:1 1 280px;
+  max-width:420px;
+  background:var(--surface);
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  padding:24px 48px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  overflow:hidden;
+}
+
+/* Layout simplificado quando não há itens sugeridos. */
+.recommendation_column.is-empty {
+  padding:24px;
+}
+
+/* Carrossel horizontal com produtos recomendados. */
+#recommendation {
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:6px;
+  margin:0 -12px;
+  padding-left:12px;
+}
+
+/* Altura da barra de rolagem horizontal. */
+#recommendation::-webkit-scrollbar {
+  height:6px;
+}
+
+/* Aparência da barra de rolagem do carrossel. */
+#recommendation::-webkit-scrollbar-thumb {
+  background:rgba(255,255,255,0.12);
+  border-radius:999px;
+}
+
+/* Cartão individual de recomendação. */
+.rec_card {
+  flex:0 0 200px;
+  background:var(--surface-alt);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  scroll-snap-align:start;
+}
+
+/* Título do item recomendado. */
+.rec_title {
+  font-weight:600;
+  font-size:1rem;
+}
+
+/* Metadados com descrição curta. */
+.rec_meta {
+  color:var(--text-muted);
+  font-size:0.9rem;
+}
+
+/* Botão de adicionar item a partir do carrossel. */
+.rec_card .add_btn {
+  width:100%;
+  padding:8px 0;
+}
+
+/* Setas de navegação do carrossel. */
+.rec_arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,0.12);
+  color:var(--text);
+  font-size:22px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s, opacity .2s;
+}
+
+/* Realça setas quando o usuário passa o mouse. */
+.rec_arrow:hover {
+  background:rgba(255,255,255,0.22);
+}
+
+/* Define aparência de seta desativada. */
+.rec_arrow[disabled] {
+  opacity:0.3;
+  cursor:default;
+}
+
+/* Esconde seta quando não está ativa. */
+.rec_arrow.is-hidden {
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Sem setas quando a coluna está vazia. */
+.recommendation_column.is-empty .rec_arrow {
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Posiciona seta anterior à esquerda. */
+.rec_arrow[data-carousel="prev"] {
+  left:8px;
+}
+
+/* Posiciona seta próxima à direita. */
+.rec_arrow[data-carousel="next"] {
+  right:8px;
+}
+
+/* Mensagem exibida quando não há sugestões. */
+.recommendation_column .empty_state {
+  color:var(--text-muted);
+  padding:8px 0;
+}
+
+/* Versão estática do painel ao usar página dedicada. */
+#cart_panel.standalone {
+  position:static;
+  width:auto;
+  max-height:none;
+  box-shadow:none;
+  flex:1 1 480px;
+}
+
+/* Ajustes internos para modo página cheia. */
+#cart_panel.standalone .cart_inner {
+  padding:0;
+  gap:24px;
+}
+
+/* Lista sem limite de altura no modo standalone. */
+#cart_panel.standalone .cart_left #cart {
+  max-height:none;
+  overflow:visible;
+}
+
+/* Esconde coluna direita quando layout ocupa toda a página. */
+#cart_panel.standalone .cart_right {
+  display:none;
+}
+
+@media (max-width:960px) {
+  .cart_main {
+    flex-direction:column;
+  }
+
+  .recommendation_column {
+    max-width:none;
+    width:100%;
+    order:2;
+  }
+}
+
+@media (max-width:720px) {
+  #cart_panel_submenu,
+  .cart_panel {
+    right:16px;
+    left:16px;
+    width:auto;
+  }
+
+  #cart_panel_submenu {
+    top:calc(var(--header-height) + 12px);
+  }
+
+  .cart_inner {
+    padding:18px;
+  }
+
+  .cart_panel #cart_items {
+    max-height:200px;
+  }
+}
+
+@media (max-width:640px) {
+  .cart_table thead {
+    display:none;
+  }
+
+  .cart_table tbody tr {
+    display:block;
+    margin-bottom:12px;
+    background:var(--surface);
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  .cart_table tbody td {
+    display:block;
+    padding:12px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+
+  .cart_table tbody td:last-child {
+    border-bottom:none;
+  }
+
+  .cart_table .item_price,
+  .cart_table .item_total {
+    text-align:left;
+  }
+}

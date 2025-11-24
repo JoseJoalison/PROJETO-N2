@@ -1,0 +1,8 @@
+/* Arquivo índice que importa módulos CSS separados para organização.
+	Nota: centraliza imports para carregar estilos em ordem.
+*/
+@import url('base.css');
+@import url('layout.css');
+@import url('componentes.css');
+@import url('carrinho.css');
+@import url('paginas.css');

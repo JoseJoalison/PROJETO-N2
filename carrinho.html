@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrinho - Rita Lanches</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="page_carrinho">
+  <header class="cabecalho">
+    <a class="marca" href="index.html"><img src="img/Logo.png" alt="Rita Lanches"><span class="marca_texto">Rita Lanches</span></a>
+    <nav class="navegacao">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Cardápio</a>
+      <a href="localizacao.html">Localização</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="carrinho.html" class="active">Carrinho</a>
+    </nav>
+    <a class="acao" href="menu.html">Peça Agora</a>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="cart_main">
+        <!-- Painel principal do carrinho (copiado do menu para funcionalidade standalone) -->
+        <aside id="cart_panel" class="standalone">
+          <div class="container cart_inner">
+            <div class="cart_left">
+              <div class="titulo_secao"><h2>Carrinho</h2></div>
+              <div id="cart">
+                <table id="cart_table" class="cart_table">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Preço</th>
+                      <th>Qtd</th>
+                      <th>Total</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="cart_table_body"></tbody>
+                </table>
+              </div>
+              <!-- Footer moved here: payment, totals and actions in one horizontal row -->
+              <div class="cart_footer">
+                <div class="payment_block">
+                  <strong>Forma de pagamento:</strong><br>
+                  <label><input type="radio" name="payment" value="cartao"> Cartão (+R$1,00)</label><br>
+                  <label><input type="radio" name="payment" value="dinheiro" checked> Dinheiro</label><br>
+                  <label><input type="radio" name="payment" value="pix"> Pix</label>
+                </div>
+
+                <div class="totals_block">
+                  <div class="secundario">Subtotal</div>
+                  <div id="cart_subtotal">R$ 0,00</div>
+                  <div class="secundario">Total</div>
+                  <div id="cart_total">R$ 0,00</div>
+                </div>
+
+                <div class="actions">
+                  <button id="whatsapp_btn" class="botao" disabled>Enviar pedido via WhatsApp</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </aside>
+
+        <!-- Área de recomendação -->
+        <aside class="recommendation_column">
+          <div class="titulo-secao"><h3>Recomendação</h3><div class="secundario">Combina com seu pedido</div></div>
+          <button class="rec_arrow" type="button" data-carousel="prev" aria-label="Ver item anterior">‹</button>
+          <button class="rec_arrow" type="button" data-carousel="next" aria-label="Ver próximo item">›</button>
+          <div id="recommendation">
+            <div class="empty_state secundario">Nenhuma recomendação ainda.</div>
+          </div>
+        </aside>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><div>© 2025 Rita Lanches</div><div class="secundario">Pedidos: 18:30 - 22:30 · (61) 99957-7146</div></div>
+  </footer>
+
+  <script src="js/carrinho.js"></script>
+</body>
+</html>

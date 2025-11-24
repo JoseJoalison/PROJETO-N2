@@ -1,0 +1,90 @@
+/* Seção "Sobre" com duas colunas equilibradas. */
+.colunas_sobre {
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:24px;
+	align-items:start;
+}
+
+/* Grade de imagens decorativas na página Sobre. */
+.imagens_sobre {
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:12px;
+}
+
+/* Ajusta imagens da galeria para cobrir espaço. */
+.imagens_sobre img {
+	border-radius:var(--radius);
+	object-fit:cover;
+}
+
+/* Layout com coluna de conteúdo e lateral. */
+.duas_colunas {
+	display:grid;
+	grid-template-columns:2fr 1fr;
+	gap:24px;
+}
+
+/* Campos do formulário de contato estilizados. */
+.form_contato input,
+.form_contato textarea {
+	width:100%;
+	padding:12px;
+	border-radius:12px;
+	border:1px solid rgba(255,255,255,0.12);
+	background:var(--surface);
+	color:var(--text);
+	resize:vertical;
+}
+
+/* Altura inicial do campo de mensagem. */
+.form_contato textarea {
+	min-height:140px;
+}
+
+/* Links de contato usam cor principal. */
+.info_contato a {
+	color:var(--primary);
+}
+
+/* Grade para listar unidades e mapa. */
+.location_grid {
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:24px;
+}
+
+/* Cartão com informações de endereço. */
+.location_card {
+	background:var(--surface);
+	padding:18px;
+	border-radius:var(--radius);
+	border:1px solid rgba(255,255,255,0.04);
+	display:flex;
+	flex-direction:column;
+	gap:10px;
+}
+
+/* Moldura do mapa incorporado. */
+.map_card iframe {
+	width:100%;
+	height:320px;
+	border:0;
+	border-radius:var(--radius);
+}
+
+/* Quebra grades em coluna única no mobile. */
+@media (max-width:840px) {
+	/* Seções com grid passam a uma coluna. */
+	.colunas_sobre,
+	.location_grid,
+	.duas_colunas {
+		grid-template-columns:1fr;
+	}
+
+	/* Galeria de imagens também vira uma coluna. */
+	.imagens_sobre {
+		grid-template-columns:1fr;
+	}
+}

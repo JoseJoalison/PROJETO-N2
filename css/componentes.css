@@ -1,0 +1,189 @@
+/* Botões principais reutilizados em toda a interface. */
+.botao,
+.botao_pedir,
+.add_btn {
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:8px;
+	padding:10px 16px;
+	border-radius:12px;
+	border:none;
+	background:var(--primary);
+	color:#050505;
+	font-weight:700;
+	cursor:pointer;
+	text-decoration:none;
+	transition:transform .2s, box-shadow .2s;
+}
+
+/* Eleva levemente botões ao passar o mouse. */
+.botao:hover,
+.botao_pedir:hover,
+.add_btn:hover {
+	transform:translateY(-2px);
+	box-shadow:0 10px 24px rgba(255,98,54,0.25);
+}
+
+/* Item do cardápio com imagem, infos e ações. */
+.cardapio_item {
+	display:flex;
+	gap:18px;
+	align-items:flex-start;
+	justify-content:space-between;
+	background:var(--surface);
+	padding:18px;
+	border-radius:var(--radius);
+	border:1px solid rgba(255,255,255,0.04);
+}
+
+/* Cartões usados na seção de destaques. */
+.destaque_card {
+	display:flex;
+	flex-direction:column;
+	gap:12px;
+	background:var(--surface);
+	padding:16px;
+	border-radius:var(--radius);
+	border:1px solid rgba(255,255,255,0.04);
+	min-height:100%;
+}
+
+/* Imagem de capa do destaque. */
+.destaque_card_img {
+	width:100%;
+	height:150px;
+	object-fit:cover;
+	border-radius:12px;
+}
+
+/* Corpo de texto do card de destaque. */
+.destaque_card_body {
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+	min-height:0;
+}
+
+/* Ajuste de título dentro do destaque. */
+.destaque_card_body h3 {
+	margin:0;
+	font-size:1.05rem;
+}
+
+/* Rodapé com preço e ação do card destaque. */
+.destaque_card_footer {
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+	margin-top:auto;
+}
+
+/* Valor do destaque com cor principal. */
+.destaque_card_price {
+	font-weight:700;
+	color:var(--primary);
+}
+
+/* Botão pedir ocupa toda largura do card. */
+.destaque_card_footer .botao_pedir {
+	width:100%;
+	justify-content:center;
+}
+
+/* Miniaturas dos pratos no cardápio. */
+.cardapio_item img {
+	width:120px;
+	height:100px;
+	object-fit:cover;
+	border-radius:12px;
+}
+
+/* Bloco textual com nome e descrição do prato. */
+.info_item {
+	flex:1 1 auto;
+	display:flex;
+	flex-direction:column;
+	gap:10px;
+}
+
+/* Título do prato com leve destaque. */
+.info_item h3 {
+	margin:0;
+	font-size:1.1rem;
+}
+
+/* Classe de preço com cor de destaque. */
+.preco {
+	font-weight:700;
+	color:var(--primary);
+}
+
+/* Coluna de ações como botão adicionar e preço. */
+.acoes_item {
+	display:flex;
+	flex-direction:column;
+	align-items:flex-end;
+	gap:10px;
+	text-align:right;
+}
+
+/* Lista agrupando itens de cardápio em bloco. */
+.lista_cardapio {
+	display:flex;
+	flex-direction:column;
+	gap:12px;
+	background:var(--surface);
+	padding:16px;
+	border-radius:var(--radius);
+	border:1px solid rgba(255,255,255,0.04);
+}
+
+/* Linha individual de item simplificado. */
+.linha_item {
+	display:flex;
+	justify-content:space-between;
+	align-items:flex-start;
+	gap:18px;
+	padding:14px;
+	border-radius:12px;
+	background:var(--surface-alt);
+}
+
+/* Ajuste de tipografia do preço na linha. */
+.linha_item .preco {
+	font-size:1rem;
+}
+
+/* Destaque para o nome do item. */
+.nome_item {
+	font-weight:700;
+}
+
+/* Descrição com tom secundário. */
+.descricao_item {
+	margin-top:4px;
+	color:var(--text-muted);
+	font-size:0.95rem;
+}
+
+/* Responsividade para dispositivos compactos. */
+@media (max-width:640px) {
+	/* Cardápio empilha conteúdo ao invés de lado a lado. */
+	.cardapio_item {
+		flex-direction:column;
+		align-items:stretch;
+	}
+
+	/* Imagem ocupa largura cheia no mobile. */
+	.cardapio_item img {
+		width:100%;
+		height:180px;
+	}
+
+	/* Alinha ações à esquerda em telas pequenas. */
+	.acoes_item {
+		align-items:flex-start;
+		text-align:left;
+	}
+}

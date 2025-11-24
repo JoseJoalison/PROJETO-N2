@@ -1,0 +1,247 @@
+/* Cabeçalho fixo transparente que acompanha a rolagem. */
+.cabecalho {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:40;
+  height:var(--header-height);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(16px,4vw,40px);
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* Logotipo e nome da marca lado a lado. */
+.cabecalho .marca {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  color:var(--text);
+}
+
+/* Ajusta dimensões do logotipo. */
+.cabecalho .marca img {
+  height:44px;
+  width:auto;
+  border-radius:12px;
+  filter:brightness(0) invert(1);
+}
+
+/* Evita quebra do texto da marca. */
+.marca_texto {
+  white-space:nowrap;
+}
+
+/* Links principais de navegação. */
+.navegacao {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* Aparência de cada item do menu. */
+.navegacao a {
+  padding:8px 14px;
+  border-radius:999px;
+  color:var(--text-muted);
+  font-weight:600;
+  transition:color .2s, background .2s;
+}
+
+/* Destaque para link ativo ou em hover. */
+.navegacao a:hover,
+.navegacao a.active {
+  color:var(--text);
+  background:rgba(255,255,255,0.12);
+}
+
+/* Botão de ação primária no cabeçalho. */
+.acao {
+  background:var(--primary);
+  color:#050505;
+  padding:10px 18px;
+  border-radius:999px;
+  font-weight:700;
+  transition:transform .2s;
+}
+
+/* Elevação leve no hover do call-to-action. */
+.acao:hover {
+  transform:translateY(-2px);
+}
+
+/* Seção hero com texto e imagem. */
+.destaque {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:var(--spacing);
+  padding:var(--spacing) 0;
+}
+
+/* Bloco textual da dobra principal. */
+.destaque .texto {
+  flex:1 1 280px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* Título principal responsivo. */
+.destaque h1 {
+  font-size:clamp(32px,4vw,48px);
+  line-height:1.1;
+}
+
+/* Parágrafo introdutório com cor secundária. */
+.destaque p {
+  color:var(--text-muted);
+  font-size:1rem;
+}
+
+/* Imagem ilustrativa do hero. */
+.destaque .imagem {
+  flex:1 1 280px;
+}
+
+/* Cabeçalhos de seção com botões auxiliares. */
+.titulo_secao,
+.titulo-secao {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+/* Títulos das seções padronizados. */
+.titulo_secao h2,
+.titulo-secao h3 {
+  font-size:clamp(1.4rem, 3.2vw, 1.8rem);
+}
+
+/* Grade de cards de cardápio. */
+.grade_cardapio,
+.grade-cardapio {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:18px;
+}
+
+/* Wrapper do carrossel de destaques. */
+.destaques_carrossel {
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Botões circulares que controlam o carrossel. */
+.destaques_carrossel .destaques_arrow {
+  flex:0 0 auto;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(0,0,0,0.4);
+  color:var(--text);
+  font-size:22px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s, opacity .2s;
+}
+
+/* Realce das setas ao interagir. */
+.destaques_carrossel .destaques_arrow:hover {
+  background:rgba(255,255,255,0.16);
+}
+
+/* Aparência quando a seta não está disponível. */
+.destaques_carrossel .destaques_arrow:disabled {
+  opacity:0.35;
+  pointer-events:none;
+}
+
+/* Lista rolável dos cards em destaque. */
+.destaques_lista {
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding:18px;
+  padding:12px 6px 18px;
+  margin:0 -6px;
+}
+
+/* Barra de rolagem fina para o carrossel. */
+.destaques_lista::-webkit-scrollbar {
+  height:6px;
+}
+
+/* Aparência da barra de rolagem horizontal. */
+.destaques_lista::-webkit-scrollbar-thumb {
+  background:rgba(255,255,255,0.12);
+  border-radius:999px;
+}
+
+/* Cada card ocupa largura mínima no carrossel. */
+.destaques_lista .destaque_card {
+  flex:0 0 min(280px, 78vw);
+  scroll-snap-align:start;
+}
+
+/* Oculta setas quando não há rolagem. */
+.destaques_carrossel:not(.is-overflowing) .destaques_arrow {
+  display:none;
+}
+
+/* Rodapé escuro com informação adicional. */
+footer {
+  background:rgba(0,0,0,0.85);
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* Distribui conteúdo do rodapé. */
+footer .container {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:18px 0;
+  color:var(--text-muted);
+  flex-wrap:wrap;
+}
+
+/* Ajustes responsivos para telas menores. */
+@media (max-width:840px) {
+	/* Cabeçalho vira bloco empilhado no mobile. */
+  .cabecalho {
+    flex-wrap:wrap;
+    gap:12px;
+    padding:16px;
+    height:auto;
+  }
+
+	/* Compensa altura extra do cabeçalho expansível. */
+  main {
+    padding-top:calc(var(--header-height) + 96px);
+  }
+
+	/* Navegação ocupa largura total. */
+  .navegacao {
+    width:100%;
+    order:3;
+  }
+
+	/* Botão de ação posicionado após logo. */
+  .acao {
+    order:2;
+  }
+}
