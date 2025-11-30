@@ -471,17 +471,34 @@
 }
 
 @media (max-width:720px) {
-  #cart_panel_submenu,
+   #cart_panel_submenu,
   .cart_panel {
-    right:16px;
-    left:16px;
-    width:auto;
+    right:8px;
+    left:auto;
+    width:calc(100vw - 24px);
   }
 
   #cart_panel_submenu {
-    top:calc(var(--header-height) + 12px);
+		/* No mobile o card sobe um pouco, mas ainda
+		   abaixo do cabeçalho para não cobrir o menu. */
+		top:calc(var(--header-height) + 72px);
   }
 
+  /* Versão mais compacta do botão e do card em telas tipo celular. */
+  .cart_toggle {
+    padding:4px 10px;
+    font-size:0.8rem;
+    gap:4px;
+  }
+
+  .cart_panel.collapsed {
+    padding:4px 8px;
+    max-width:160px;
+  }
+
+  .cart_panel.collapsed .cart_inner {
+    gap:4px;
+  }
   .cart_inner {
     padding:18px;
   }

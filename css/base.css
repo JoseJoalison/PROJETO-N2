@@ -52,7 +52,6 @@ main {
   width:min(var(--max-width), 92%);
   margin:0 auto;
 }
-
 /* Links herdam cor e removem sublinhado padrão. */
 a {
   color:inherit;
